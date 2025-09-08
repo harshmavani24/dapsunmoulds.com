@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Coming Soon — Metal Moulds & Components</title>
+<meta name="description" content="Premium moulds & metal components — launching soon. Join the waitlist." />
+<style>
+  :root{
+    --bg1: #0b0f14;
+    --bg2: #131821;
+    --glass: rgba(255,255,255,0.06);
+    --glass-2: rgba(255,255,255,0.04);
+    --accent: #d7dbe3;
+    --accent-2: #c7ceda;
+    --metal-1: linear-gradient(135deg,#bfc7d1 0%, #8a92a0 40%, #c9ced6 100%);
+    --glass-blur: 14px;
+    --card-radius: 18px;
+    --shadow: 0 8px 30px rgba(3,6,12,0.6);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+
+  /* Page layout */
+  html,body{height:100%;margin:0;background:radial-gradient(1200px 600px at 10% 20%, rgba(255,255,255,0.02), transparent 6%),
+    radial-gradient(900px 400px at 90% 80%, rgba(255,255,255,0.02), transparent 6%),
+    linear-gradient(180deg,var(--bg1),var(--bg2));
+    color:var(--accent); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  }
+
+  .wrap{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:36px;
+    gap:28px;
+    box-sizing:border-box;
+  }
+
+  /* Main glass card */
+  .card{
+    width:100%;
+    max-width:980px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius:var(--card-radius);
+    padding:28px;
+    display:flex;
+    gap:24px;
+    align-items:center;
+    box-shadow:var(--shadow);
+    backdrop-filter: blur(var(--glass-blur)) saturate(1.05);
+    position:relative;
+    overflow:hidden;
+  }
+
+  /* Left: text */
+  .left{
+    flex:1 1 520px;
+    min-width:220px;
+  }
+  h1{
+    margin:0 0 10px 0;
+    font-size:clamp(24px,4.2vw,40px);
+    letter-spacing:0.6px;
+    color:var(--accent);
+    line-height:1.02;
+    font-weight:700;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.02);
+  }
+  p.lead{
+    margin:0 0 18px 0;
+    color:var(--accent-2);
+    opacity:0.9;
+    font-size:clamp(13px,1.7vw,16px);
+  }
+
+  /* Countdown */
+  .countdown{
+    display:flex;
+    gap:12px;
+    margin-bottom:18px;
+    flex-wrap:wrap;
+  }
+  .countdown .chip{
+    background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+    border-radius:10px;
+    padding:10px 12px;
+    min-width:72px;
+    text-align:center;
+    border:1px solid rgba(255,255,255,0.03);
+    font-weight:600;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5) inset;
+  }
+  .chip .num{font-size:18px;display:block;color:#fff;}
+  .chip .lbl{font-size:11px;color:var(--accent-2);opacity:0.9;margin-top:4px;}
+
+  /* Notify form */
+  form.notify{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    max-width:540px;
+  }
+  .notify input[type="email"]{
+    flex:1;
+    min-width:0;
+    background:transparent;
+    border:1px solid rgba(255,255,255,0.06);
+    padding:12px 14px;
+    border-radius:12px;
+    color:var(--accent);
+    outline:none;
+    font-size:14px;
+    transition:box-shadow .18s, border-color .18s;
+    backdrop-filter: blur(6px);
+  }
+  .notify input[type="email"]::placeholder{color:rgba(199,206,218,0.45);}
+  .notify button{
+    padding:11px 16px;
+    border-radius:12px;
+    border: none;
+    background: linear-gradient(90deg,#e6e9ef44 0%, #dde2ea22 100%);
+    color:var(--accent);
+    font-weight:700;
+    cursor:pointer;
+    min-width:120px;
+    box-shadow: 0 6px 18px rgba(8,10,14,0.4);
+    transition:transform .12s ease, box-shadow .12s;
+    backdrop-filter: blur(6px);
+  }
+  .notify button:active{transform:translateY(1px) scale(.998)}
+  .notify .err{display:block;color:#f78f8f;font-size:12px;margin-top:8px;}
+
+  /* Right: metallic artwork */
+  .art{
+    width:360px;
+    max-width:40%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    padding:16px;
+  }
+
+  /* Metallic circle with sheen */
+  .metal{
+    width:260px;height:260px;border-radius:50%;
+    background: var(--metal-1);
+    box-shadow: 0 18px 40px rgba(4,6,10,0.6);
+    display:flex;align-items:center;justify-content:center;
+    position:relative; overflow:visible;
+    border:1px solid rgba(255,255,255,0.08);
+  }
+  /* subtle animated sheen */
+  .metal::after{
+    content:"";
+    position:absolute;left:-40%;top:-60%;
+    width:200%;height:220%;
+    background:linear-gradient(120deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.18) 45%, rgba(255,255,255,0.02) 60%, rgba(255,255,255,0.0) 70%);
+    transform:rotate(-20deg) translateX(-30%);
+    animation:sheen 3.8s linear infinite;
+    mix-blend-mode:overlay;
+  }
+  @keyframes sheen{
+    0%{transform:rotate(-20deg) translateX(-80%);}
+    50%{transform:rotate(-20deg) translateX(40%);}
+    100%{transform:rotate(-20deg) translateX(140%);}
+  }
+
+  /* small metal gear silhouette inside */
+  .gear{
+    width:46%;
+    height:46%;
+  }
+
+  /* floating metallic shards around */
+  .shard{
+    position:absolute; width:10px;height:40px; border-radius:6px; transform-origin:center;
+    background:linear-gradient(180deg,#ffffff06,#ffffff12);
+    filter:blur(.3px);
+    opacity:0.7;
+    animation: floaty 6s linear infinite;
+  }
+  .s1{left:14%;top:12%; transform:rotate(18deg) scale(.9); animation-delay:0s;}
+  .s2{right:12%;bottom:20%; transform:rotate(-22deg) scale(.8); animation-delay:1.6s;}
+  .s3{left:6%;bottom:18%; transform:rotate(8deg) scale(.7); animation-delay:3s;}
+  @keyframes floaty{
+    0%{transform:translateY(0) rotate(0) scale(1)}
+    50%{transform:translateY(-8px) rotate(10deg) scale(1.06)}
+    100%{transform:translateY(0) rotate(0) scale(1)}
+  }
+
+  /* subtle metal texture using CSS noise via gradients */
+  .metal .grain{
+    position:absolute;inset:0; border-radius:inherit; pointer-events:none;
+    background-image:
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+    background-size: 6px 6px, 6px 6px;
+    mix-blend-mode:multiply; opacity:0.25;
+  }
+
+  /* footer/notes */
+  .meta{
+    margin-top:14px;font-size:12px;color:var(--accent-2);opacity:0.9;
+  }
+
+  /* Responsiveness */
+  @media (max-width:880px){
+    .card{flex-direction:column; padding:20px;}
+    .art{max-width:100%; width:100%;}
+    .metal{width:220px;height:220px}
+  }
+  @media (max-width:420px){
+    .notify button{min-width:90px;padding:10px; font-size:13px}
+    .countdown .chip{min-width:64px;padding:8px 10px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card" role="region" aria-label="Coming soon announcement">
+    <div class="left">
+      <h1>Premium Moulds & Metal Components — Coming Soon</h1>
+      <p class="lead">Precision-engineered tooling and metal components. High-grade molds, superior finishes, and manufacturing-ready design. We're polishing the final parts — be first to know when we launch.</p>
+
+      <div class="countdown" aria-live="polite" id="countdown" title="Countdown to launch">
+        <div class="chip"><span class="num" id="days">--</span><span class="lbl">Days</span></div>
+        <div class="chip"><span class="num" id="hours">--</span><span class="lbl">Hours</span></div>
+        <div class="chip"><span class="num" id="minutes">--</span><span class="lbl">Minutes</span></div>
+        <div class="chip"><span class="num" id="seconds">--</span><span class="lbl">Seconds</span></div>
+      </div>
+
+      <form class="notify" id="notifyForm" novalidate>
+        <label for="email" class="sr-only" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Email address</label>
+        <input id="email" name="email" type="email" placeholder="your@company.com" aria-label="Email for notification" required />
+        <button id="notifyBtn" type="submit" aria-label="Notify me">Notify me</button>
+      </form>
+      <div class="meta">We respect your privacy. No spam — occasional launch updates only.</div>
+      <div class="err" id="formMsg" aria-live="polite" style="margin-top:8px;color:#f7b0a0;display:none;font-size:13px;"></div>
+    </div>
+
+    <div class="art" aria-hidden="true">
+      <div class="metal" role="img" aria-label="Metallic mould illustration">
+        <!-- Gear / mould SVG (stylized metallic) -->
+        <svg class="gear" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="mg" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0" stop-color="#f7fafc" stop-opacity="0.65"/>
+              <stop offset="0.4" stop-color="#b6c0cc" stop-opacity="0.95"/>
+              <stop offset="1" stop-color="#9099a6" stop-opacity="0.98"/>
+            </linearGradient>
+            <filter id="emboss" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="0.6" result="blur"/>
+              <feOffset in="blur" dx="0.6" dy="0.9" result="off"/>
+              <feComposite in="SourceGraphic" in2="off" operator="arithmetic" k2="1" k3="-1"/>
+            </filter>
+          </defs>
+          <g transform="translate(50,50)">
+            <!-- outer toothed gear -->
+            <g transform="translate(-50,-50)">
+              <path d="M50 10 L58 16 L66 12 L74 20 L72 30 L80 38 L76 46 L82 54 L74 62 L66 58 L58 64 L50 70 L42 64 L34 68 L26 60 L30 52 L24 44 L32 36 L28 28 L36 20 L44 24 Z"
+                fill="url(#mg)" stroke="#ffffff22" stroke-width="0.8" filter="url(#emboss)"/>
+              <!-- central mould silhouette -->
+              <circle cx="50" cy="50" r="18" fill="#0f1720" opacity="0.9"/>
+              <path d="M42 44 L58 44 L58 62 L42 62 Z" fill="#cfcfd3"/>
+              <rect x="47" y="36" width="6" height="6" rx="1" fill="#bfc6d0" opacity="0.95"/>
+              <rect x="48.5" y="66" width="3" height="6" rx="1" fill="#c7ceda"/>
+            </g>
+          </g>
+        </svg>
+
+        <div class="grain" aria-hidden="true"></div>
+      </div>
+
+      <div class="shard s1" aria-hidden="true"></div>
+      <div class="shard s2" aria-hidden="true"></div>
+      <div class="shard s3" aria-hidden="true"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ----------------- Configuration -------------------
+   Set launchDate to your target launch date/time (UTC).
+   Example: new Date('2025-10-01T08:00:00Z')
+----------------------------------------------------*/
+(function(){
+  // EDIT THIS DATE as needed:
+  const launchDate = new Date('2025-10-08T08:00:00Z');
+
+  // Elements
+  const daysEl = document.getElementById('days'),
+        hoursEl = document.getElementById('hours'),
+        minsEl = document.getElementById('minutes'),
+        secsEl = document.getElementById('seconds');
+
+  function pad(n){ return String(n).padStart(2,'0'); }
+
+  function updateCountdown(){
+    const now = new Date();
+    let diff = Math.max(0, Math.floor((launchDate - now) / 1000)); // seconds
+    const days = Math.floor(diff / 86400); diff %= 86400;
+    const hours = Math.floor(diff / 3600); diff %= 3600;
+    const minutes = Math.floor(diff / 60);
+    const seconds = diff % 60;
+
+    daysEl.textContent = pad(days);
+    hoursEl.textContent = pad(hours);
+    minsEl.textContent = pad(minutes);
+    secsEl.textContent = pad(seconds);
+
+    // stop at zero - show "Launched" when done
+    if (launchDate - now <= 0) {
+      clearInterval(timer);
+      daysEl.textContent = '00';
+      hoursEl.textContent = '00';
+      minsEl.textContent = '00';
+      secsEl.textContent = '00';
+      // optional: replace text
+      const lead = document.querySelector('.lead');
+      if (lead) lead.textContent = 'We are live — check our site or contact us for production enquiries.';
+    }
+  }
+
+  updateCountdown();
+  const timer = setInterval(updateCountdown, 1000);
+
+  /* ----------------- Notify form (client-side only) ----------------- */
+  const form = document.getElementById('notifyForm');
+  const emailInput = document.getElementById('email');
+  const msg = document.getElementById('formMsg');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    msg.style.display = 'none';
+    const email = emailInput.value.trim();
+    if (!email) {
+      showMessage('Please enter your email address.');
+      emailInput.focus();
+      return;
+    }
+    // simple email regex
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if (!re.test(email)) {
+      showMessage('Invalid email address — check and try again.');
+      emailInput.focus();
+      return;
+    }
+
+    // Simulate success (no backend). You can replace this with your API fetch.
+    showMessage('Thanks — you’re on the list! We will email when we launch.', false);
+    // optional: clear
+    emailInput.value = '';
+  });
+
+  function showMessage(text, isError = true){
+    msg.style.display = 'block';
+    msg.textContent = text;
+    msg.style.color = isError ? '#f7b0a0' : '#bfe6c0';
+    setTimeout(() => {
+      msg.style.opacity = '1';
+    }, 10);
+    if (!isError) {
+      setTimeout(()=>{ msg.style.display='none'; }, 7000);
+    }
+  }
+
+  /* Accessibility: focus styles on keyboard nav */
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Tab') document.documentElement.style.setProperty('--focusOutline','2px solid rgba(180,200,255,.14)');
+  });
+
+})();
+</script>
+</body>
+</html>
