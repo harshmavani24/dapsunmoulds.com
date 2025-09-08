@@ -244,32 +244,7 @@
     <div class="art" aria-hidden="true">
       <div class="metal" role="img" aria-label="Metallic mould illustration">
         <!-- Gear / mould SVG (stylized metallic) -->
-        <svg class="gear" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <defs>
-            <linearGradient id="mg" x1="0" x2="1" y1="0" y2="1">
-              <stop offset="0" stop-color="#f7fafc" stop-opacity="0.65"/>
-              <stop offset="0.4" stop-color="#b6c0cc" stop-opacity="0.95"/>
-              <stop offset="1" stop-color="#9099a6" stop-opacity="0.98"/>
-            </linearGradient>
-            <filter id="emboss" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur in="SourceAlpha" stdDeviation="0.6" result="blur"/>
-              <feOffset in="blur" dx="0.6" dy="0.9" result="off"/>
-              <feComposite in="SourceGraphic" in2="off" operator="arithmetic" k2="1" k3="-1"/>
-            </filter>
-          </defs>
-          <g transform="translate(50,50)">
-            <!-- outer toothed gear -->
-            <g transform="translate(-50,-50)">
-              <path d="M50 10 L58 16 L66 12 L74 20 L72 30 L80 38 L76 46 L82 54 L74 62 L66 58 L58 64 L50 70 L42 64 L34 68 L26 60 L30 52 L24 44 L32 36 L28 28 L36 20 L44 24 Z"
-                fill="url(#mg)" stroke="#ffffff22" stroke-width="0.8" filter="url(#emboss)"/>
-              <!-- central mould silhouette -->
-              <circle cx="50" cy="50" r="18" fill="#0f1720" opacity="0.9"/>
-              <path d="M42 44 L58 44 L58 62 L42 62 Z" fill="#cfcfd3"/>
-              <rect x="47" y="36" width="6" height="6" rx="1" fill="#bfc6d0" opacity="0.95"/>
-              <rect x="48.5" y="66" width="3" height="6" rx="1" fill="#c7ceda"/>
-            </g>
-          </g>
-        </svg>
+        <img src="logo.png" alt="Dapsun Moulds Logo" style="max-width:60%;max-height:60%;object-fit:contain;" />
 
         <div class="grain" aria-hidden="true"></div>
       </div>
